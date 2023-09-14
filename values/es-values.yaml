@@ -1,0 +1,12 @@
+elasticsearch:
+  replicas: 4
+  imageTag: "6.8.22"
+  resources:
+    requests:
+      cpu: "2"     
+      memory: "6Gi" 
+    limits:
+      cpu: "4"    
+      memory: "8Gi" 
+  nodeSelector:
+    cloud.google.com/gke-nodepool: nodepool-1

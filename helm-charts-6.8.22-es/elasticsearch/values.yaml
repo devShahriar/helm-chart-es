@@ -13,7 +13,7 @@ roles:
   ingest: "true"
   data: "true"
 
-replicas: 3
+replicas: 5
 minimumMasterNodes: 2
 
 esMajorVersion: ""
@@ -70,15 +70,15 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-esJavaOpts: "" # example: "-Xmx1g -Xms1g"
+esJavaOpts: "-Xmx2g -Xms2g" # example: "-Xmx1g -Xms1g"
 
 resources:
   requests:
+    cpu: "1"
+    memory: "4Gi"
+  limits:
     cpu: "2"
     memory: "6Gi"
-  limits:
-    cpu: "4"
-    memory: "8Gi"
 
 initResources: {}
   # limits:
@@ -238,7 +238,7 @@ schedulerName: ""
 
 imagePullSecrets: []
 nodeSelector:
-  cloud.google.com/gke-nodepool: nodepool-1
+  cloud.google.com/gke-nodepool: common-1
 tolerations: []
 
 # Enabling this will publicly expose your Elasticsearch instance.

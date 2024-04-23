@@ -12,8 +12,8 @@ roles:
   master: "true"
   ingest: "true"
   data: "true"
-  remote_cluster_client: "true"
-  ml: "true"
+  remote_cluster_client: "false"
+  ml: "false"
 
 replicas: 4
 minimumMasterNodes: 2
@@ -65,7 +65,7 @@ hostAliases: []
 #  - "bar.local"
 
 image: "docker.elastic.co/elasticsearch/elasticsearch"
-imageTag: "7.16.4-SNAPSHOT"
+imageTag: "7.17.3"
 imagePullPolicy: "IfNotPresent"
 
 podAnnotations:
@@ -75,15 +75,15 @@ podAnnotations:
 # additionals labels
 labels: {}
 
-esJavaOpts: "-Xmx2g -Xms2g" # example: "-Xmx1g -Xms1g"
+esJavaOpts: "-Xmx3g -Xms3g" # example: "-Xmx1g -Xms1g"
 
 resources:
   requests:
     cpu: "2"
-    memory: "4Gi"
+    memory: "6Gi"
   limits:
     cpu: "2"
-    memory: "4Gi"
+    memory: "7Gi"
 
 initResources:
   {}
@@ -100,7 +100,7 @@ volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
   resources:
     requests:
-      storage: 30Gi
+      storage: 5Gi
 
 rbac:
   create: false
@@ -240,7 +240,7 @@ schedulerName: ""
 
 imagePullSecrets: []
 nodeSelector:
-  cloud.google.com/gke-nodepool: nodepool-1
+  cloud.google.com/gke-nodepool: nodepool-2-test
 tolerations: []
 
 # Enabling this will publicly expose your Elasticsearch instance.
